@@ -56,9 +56,8 @@ export function FloatingNav() {
 
           {isMobile ? (
             <div className="relative flex items-center justify-between gap-3">
-              <Link href="/" className="font-bold text-lg">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Nuria</span>
-                <span className="text-white">MG</span>
+              <Link href="/" className="flex h-9 w-9 shrink-0 items-center justify-center" aria-label="Nuria MG">
+                <img src="/icon/svg-color.svg" alt="" className="h-7 w-7" />
               </Link>
               <div className="flex items-center gap-2">
                 <LanguageToggle />
@@ -74,9 +73,8 @@ export function FloatingNav() {
             </div>
           ) : (
             <div className="relative flex items-center gap-1 lg:gap-2">
-              <Link href="/" className="font-bold text-lg mr-1 lg:mr-3 shrink-0">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Nuria</span>
-                <span className="text-white">MG</span>
+              <Link href="/" className="mr-1 flex h-9 w-9 shrink-0 items-center justify-center lg:mr-3" aria-label="Nuria MG">
+                <img src="/icon/svg-color.svg" alt="" className="h-7 w-7" />
               </Link>
               {navItems.map((item) => (
                 <Link

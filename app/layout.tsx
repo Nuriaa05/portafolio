@@ -4,10 +4,28 @@ import { LanguageProvider } from "@/components/language-provider"
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://nuriaa05.github.io/portafolio"),
   title: "Nuria Maitena Gonzalez | Portfolio",
   description: "Portfolio de Nuria Maitena Gonzalez, desarrolladora frontend.",
   icons: {
-    icon: "/placeholder-logo.svg",
+    icon: [
+      { url: "/icon/svg-white.svg", type: "image/svg+xml" },
+      { url: "/icon/32x32-white.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon/48x48-white.png", sizes: "48x48", type: "image/png" },
+    ],
+    apple: [{ url: "/icon/180x180-color.png", sizes: "180x180", type: "image/png" }],
+  },
+  openGraph: {
+    title: "Nuria Maitena Gonzalez | Portfolio",
+    description: "Portfolio de Nuria Maitena Gonzalez, desarrolladora frontend.",
+    images: [
+      {
+        url: "/icon/OG-Nuria.png",
+        width: 1200,
+        height: 630,
+        alt: "Nuria Maitena Gonzalez",
+      },
+    ],
   },
 }
 

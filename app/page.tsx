@@ -325,9 +325,8 @@ export default function Portfolio() {
       <footer className="border-t border-zinc-800 py-12">
         <div className="container flex flex-col md:flex-row justify-between items-center gap-6">
           <div>
-            <Link href="/" className="font-bold text-xl">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">Nuria</span>
-              <span className="text-white">MG</span>
+            <Link href="/" className="inline-flex h-12 w-12 items-center justify-center" aria-label="Nuria MG">
+              <img src="/icon/svg-color.svg" alt="" className="h-10 w-10" />
             </Link>
             <p className="text-sm text-zinc-500 mt-2">
               © {new Date().getFullYear()} {name}. {t.footer.rights}
