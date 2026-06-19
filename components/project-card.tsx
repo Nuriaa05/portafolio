@@ -15,13 +15,15 @@ interface ProjectCardProps {
   tags: string[]
   image?: string
   demoUrl?: string
+  showDemoButton?: boolean
   repoUrl?: string
 }
 
-export function ProjectCard({ title, description, tags, image, demoUrl, repoUrl }: ProjectCardProps) {
+export function ProjectCard({ title, description, tags, image, demoUrl, showDemoButton, repoUrl }: ProjectCardProps) {
   const [isHovered, setIsHovered] = useState(false)
   const { t } = useLanguage()
-  const hasProjectLinks = Boolean(demoUrl || repoUrl)
+  const canShowDemo = Boolean(demoUrl || showDemoButton)
+  const hasProjectLinks = Boolean(canShowDemo || repoUrl)
 
   return (
     <motion.div
@@ -61,7 +63,7 @@ export function ProjectCard({ title, description, tags, image, demoUrl, repoUrl 
             )}
           </div>
 
-          <div className="p-6 flex-grow">
+          <div className="flex flex-1 flex-col p-6">
             <h3 className="text-xl font-bold mb-2">{title}</h3>
             <p className="text-zinc-400 mb-4">{description}</p>
 
@@ -76,7 +78,7 @@ export function ProjectCard({ title, description, tags, image, demoUrl, repoUrl 
             {hasProjectLinks && (
               <div
                 className={`flex gap-3 mt-auto pt-4 border-t border-zinc-700/50 ${
-                  repoUrl && demoUrl ? "justify-between" : "justify-end"
+                  repoUrl && canShowDemo ? "justify-between" : "justify-end"
                 }`}
               >
                 {repoUrl && (
@@ -92,7 +94,7 @@ export function ProjectCard({ title, description, tags, image, demoUrl, repoUrl 
                     </Link>
                   </Button>
                 )}
-                {demoUrl && (
+                {demoUrl ? (
                   <Button
                     size="sm"
                     className="bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0"
@@ -103,6 +105,18 @@ export function ProjectCard({ title, description, tags, image, demoUrl, repoUrl 
                       <ArrowUpRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
+                ) : (
+                  showDemoButton && (
+                    <Button
+                      type="button"
+                      size="sm"
+                      aria-disabled="true"
+                      className="cursor-default bg-gradient-to-r from-purple-500 to-pink-500 border-0"
+                    >
+                      {t.projects.liveDemo}
+                      <ArrowUpRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  )
                 )}
               </div>
             )}

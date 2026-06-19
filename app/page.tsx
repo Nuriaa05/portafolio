@@ -42,6 +42,7 @@ const projectMeta: Array<{
   tags: string[]
   image?: string
   demoUrl?: string
+  showDemoButton?: boolean
 }> = [
   {
     tags: ["React", "Vite", "TypeScript", "Tailwind CSS", "Radix UI", "Vitest"],
@@ -55,6 +56,8 @@ const projectMeta: Array<{
   },
   {
     tags: ["NestJS", "Node.js", "TypeScript", "PostgreSQL", "Redis", "Docker", "Swagger", "Jest"],
+    image: "/projects/neutron-tecnologia-portada.png",
+    showDemoButton: true,
   },
 ]
 
@@ -262,6 +265,7 @@ export default function Portfolio() {
                 tags={projectMeta[index].tags}
                 image={projectMeta[index].image}
                 demoUrl={projectMeta[index].demoUrl}
+                showDemoButton={projectMeta[index].showDemoButton}
               />
             ))}
           </div>
