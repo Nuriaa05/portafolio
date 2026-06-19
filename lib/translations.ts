@@ -13,7 +13,8 @@ export const translations = {
     hero: {
       badge: "Software Technician & Creative Developer",
       greeting: "Hi, I'm",
-      description: "I create functional, well-designed digital experiences with code, UX thinking, and AI-assisted workflows.",
+      description:
+        "I specialize in building web applications that combine professional design, maintainable code, and results-oriented SEO optimization.",
       viewProjects: "View Projects",
       contactMe: "Contact Me",
     },
@@ -99,6 +100,8 @@ export const translations = {
       sending: "Sending...",
       toastTitle: "Message sent!",
       toastDescription: "Thanks for reaching out. I'll get back to you soon.",
+      toastErrorTitle: "Message not sent",
+      toastErrorDescription: "Please try again or contact me directly by email.",
     },
     footer: {
       rights: "All rights reserved.",
@@ -117,7 +120,7 @@ export const translations = {
       badge: "Técnica en Desarrollo de Software",
       greeting: "Hola, soy",
       description:
-        "Creo experiencias digitales funcionales y bien diseñadas con código, criterio UX/UI y herramientas de inteligencia artificial.",
+        "Especializada en el desarrollo de aplicaciones web que combinan diseño profesional, código mantenible y optimización SEO orientada a resultados.",
       viewProjects: "Ver Proyectos",
       contactMe: "Contáctame",
     },
@@ -203,6 +206,8 @@ export const translations = {
       sending: "Enviando...",
       toastTitle: "¡Mensaje enviado!",
       toastDescription: "Gracias por contactarme. Te responderé pronto.",
+      toastErrorTitle: "No se pudo enviar el mensaje",
+      toastErrorDescription: "Intentá nuevamente o escribime directamente por correo.",
     },
     footer: {
       rights: "Todos los derechos reservados.",

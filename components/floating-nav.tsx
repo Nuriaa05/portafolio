@@ -90,10 +90,13 @@ export function FloatingNav() {
                 <LanguageToggle />
               </div>
               <Button
+                asChild
                 size="sm"
                 className="ml-1 lg:ml-2 shrink-0 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0"
               >
-                {t.nav.resume}
+                <Link href="/documents/CV-Nuria-Gonzalez.pdf" download>
+                  {t.nav.resume}
+                </Link>
               </Button>
             </div>
           )}
@@ -119,8 +122,13 @@ export function FloatingNav() {
                 {item.name}
               </Link>
             ))}
-            <Button className="mt-6 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0">
-              {t.nav.resume}
+            <Button
+              asChild
+              className="mt-6 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-pink-500 hover:to-purple-500 border-0"
+            >
+              <Link href="/documents/CV-Nuria-Gonzalez.pdf" download onClick={handleNavClick}>
+                {t.nav.resume}
+              </Link>
             </Button>
           </div>
         </motion.div>

@@ -12,7 +12,11 @@ import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
 import { useLanguage } from "@/components/language-provider"
 
-export function ContactForm() {
+interface ContactFormProps {
+  recipientEmail: string
+}
+
+export function ContactForm({ recipientEmail }: ContactFormProps) {
   const { toast } = useToast()
   const { t } = useLanguage()
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -20,18 +24,46 @@ export function ContactForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const form = e.currentTarget
+    const formData = new FormData(form)
+    const subject = formData.get("subject")?.toString().trim()
+
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    formData.append(
+      "_subject",
+      subject ? `Nuevo mensaje del portfolio: ${subject}` : "Nuevo mensaje del portfolio"
+    )
+    formData.append("_template", "table")
+    formData.append("_captcha", "false")
 
-    toast({
-      title: t.contact.toastTitle,
-      description: t.contact.toastDescription,
-    })
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipientEmail)}`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      })
 
-    setIsSubmitting(false)
-    form.reset()
+      if (!response.ok) {
+        throw new Error("Contact form request failed")
+      }
+
+      toast({
+        title: t.contact.toastTitle,
+        description: t.contact.toastDescription,
+      })
+
+      form.reset()
+    } catch {
+      toast({
+        variant: "destructive",
+        title: t.contact.toastErrorTitle,
+        description: t.contact.toastErrorDescription,
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -48,8 +80,17 @@ export function ContactForm() {
           <h3 className="text-2xl font-bold mb-6">{t.contact.formTitle}</h3>
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            <input
+              type="text"
+              name="_honey"
+              className="hidden"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+            />
             <div className="space-y-2">
               <Input
+                name="name"
                 placeholder={t.contact.namePlaceholder}
                 required
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
@@ -57,6 +98,7 @@ export function ContactForm() {
             </div>
             <div className="space-y-2">
               <Input
+                name="email"
                 type="email"
                 placeholder={t.contact.emailPlaceholder}
                 required
@@ -65,6 +107,7 @@ export function ContactForm() {
             </div>
             <div className="space-y-2">
               <Input
+                name="subject"
                 placeholder={t.contact.subjectPlaceholder}
                 required
                 className="bg-zinc-900/50 border-zinc-700 focus:border-purple-500 focus:ring-purple-500/20"
@@ -72,6 +115,7 @@ export function ContactForm() {
             </div>
             <div className="space-y-2">
               <Textarea
+                name="message"
                 placeholder={t.contact.messagePlaceholder}
                 rows={5}
                 required

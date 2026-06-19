@@ -38,12 +38,20 @@ const skills = [
   { name: "Git", image: "/skills/git.png" },
 ]
 
-const projectMeta = [
+const projectMeta: Array<{
+  tags: string[]
+  image?: string
+  demoUrl?: string
+}> = [
   {
     tags: ["React", "Vite", "TypeScript", "Tailwind CSS", "Radix UI", "Vitest"],
+    image: "/projects/dr-masedo-portada.jpeg",
+    demoUrl: "https://dr-masedo.vercel.app/",
   },
   {
     tags: ["Astro", "TypeScript", "Tailwind CSS", "SEO", "Performance"],
+    image: "/projects/chaco-implantes-portada.jpeg",
+    demoUrl: "https://chaco-implantes.vercel.app/",
   },
   {
     tags: ["NestJS", "Node.js", "TypeScript", "PostgreSQL", "Redis", "Docker", "Swagger", "Jest"],
@@ -83,18 +91,24 @@ export default function Portfolio() {
             </h1>
             <p className="text-xl text-zinc-400 max-w-[600px]">{t.hero.description}</p>
             <div className="flex flex-wrap gap-4 pt-4">
-              <Button className="relative overflow-hidden group bg-gradient-to-r from-purple-500 to-pink-500 border-0">
-                <span className="relative z-10 flex items-center">
-                  {t.hero.viewProjects}{" "}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </span>
-                <span className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+              <Button
+                asChild
+                className="relative overflow-hidden group bg-gradient-to-r from-purple-500 to-pink-500 border-0"
+              >
+                <Link href="#projects">
+                  <span className="relative z-10 flex items-center">
+                    {t.hero.viewProjects}{" "}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-pink-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                </Link>
               </Button>
               <Button
+                asChild
                 variant="outline"
                 className="border-zinc-700 text-pink-500 hover:text-pink-700 hover:border-zinc-500"
               >
-                {t.hero.contactMe}
+                <Link href="#contact">{t.hero.contactMe}</Link>
               </Button>
             </div>
             <div className="flex gap-4 pt-4">
@@ -143,7 +157,7 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-32 relative">
+      <section id="about" className="py-16 relative">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
           <div className="absolute bottom-1/3 left-1/3 w-64 h-64 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
@@ -179,27 +193,31 @@ export default function Portfolio() {
                   </p>
                 ))}
 
-                <div className="grid grid-cols-2 gap-4 mt-8">
-                  <div className="space-y-1">
+                <div className="grid grid-cols-1 gap-4 mt-8 sm:grid-cols-2">
+                  <div className="min-w-0 space-y-1">
                     <div className="text-sm text-zinc-500">{t.about.nameLabel}</div>
-                    <div className="font-medium">{name}</div>
+                    <div className="font-medium break-words">{name}</div>
                   </div>
-                  <div className="space-y-1">
+                  <div className="min-w-0 space-y-1">
                     <div className="text-sm text-zinc-500">{t.about.emailLabel}</div>
-                    <div className="font-medium">{contactInfo.email}</div>
+                    <div className="font-medium break-words">{contactInfo.email}</div>
                   </div>
-                  <div className="space-y-1">
+                  <div className="min-w-0 space-y-1">
                     <div className="text-sm text-zinc-500">{t.about.locationLabel}</div>
-                    <div className="font-medium">{t.about.locationValue}</div>
+                    <div className="font-medium break-words">{t.about.locationValue}</div>
                   </div>
-                  <div className="space-y-1">
+                  <div className="min-w-0 space-y-1">
                     <div className="text-sm text-zinc-500">{t.about.availabilityLabel}</div>
-                    <div className="font-medium text-green-500">{t.about.availabilityValue}</div>
+                    <div className="font-medium text-green-500 break-words">{t.about.availabilityValue}</div>
                   </div>
                 </div>
 
                 <div className="mt-8">
-                  <Button className="bg-zinc-800 hover:bg-zinc-700 text-white">{t.about.downloadResume}</Button>
+                  <Button asChild className="bg-zinc-800 hover:bg-zinc-700 text-white">
+                    <Link href="/documents/CV-Nuria-Gonzalez.pdf" download>
+                      {t.about.downloadResume}
+                    </Link>
+                  </Button>
                 </div>
               </GlassmorphicCard>
             </div>
@@ -208,7 +226,7 @@ export default function Portfolio() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="py-32 relative">
+      <section id="skills" className="py-16 relative">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
           <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
@@ -226,7 +244,7 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-32 relative">
+      <section id="projects" className="py-16 relative">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-1/4 left-1/3 w-64 h-64 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
           <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-yellow-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
@@ -242,6 +260,8 @@ export default function Portfolio() {
                 title={project.title}
                 description={project.description}
                 tags={projectMeta[index].tags}
+                image={projectMeta[index].image}
+                demoUrl={projectMeta[index].demoUrl}
               />
             ))}
           </div>
@@ -249,7 +269,7 @@ export default function Portfolio() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="py-32 relative">
+      <section id="experience" className="py-16 relative">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-1/3 right-1/3 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
           <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
@@ -265,7 +285,7 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-32 relative">
+      <section id="contact" className="py-16 relative">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-pink-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
           <div className="absolute bottom-1/3 right-1/3 w-64 h-64 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
@@ -282,27 +302,27 @@ export default function Portfolio() {
                   <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center">
                     <Mail className="h-5 w-5 text-purple-400" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <div className="text-sm text-zinc-500">{t.contact.emailLabel}</div>
-                    <div className="font-medium">{contactInfo.email}</div>
+                    <div className="font-medium break-words">{contactInfo.email}</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center">
                     <Linkedin className="h-5 w-5 text-purple-400" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <div className="text-sm text-zinc-500">{t.contact.linkedinLabel}</div>
-                    <div className="font-medium">{contactInfo.linkedinDisplay}</div>
+                    <div className="font-medium break-words">{contactInfo.linkedinDisplay}</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center">
                     <Github className="h-5 w-5 text-purple-400" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <div className="text-sm text-zinc-500">{t.contact.githubLabel}</div>
-                    <div className="font-medium">{contactInfo.githubDisplay}</div>
+                    <div className="font-medium break-words">{contactInfo.githubDisplay}</div>
                   </div>
                 </div>
               </div>
@@ -316,7 +336,7 @@ export default function Portfolio() {
               </div>
             </GlassmorphicCard>
 
-            <ContactForm />
+            <ContactForm recipientEmail={contactInfo.email} />
           </div>
         </div>
       </section>

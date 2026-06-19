@@ -74,7 +74,11 @@ export function ProjectCard({ title, description, tags, image, demoUrl, repoUrl 
             </div>
 
             {hasProjectLinks && (
-              <div className="flex justify-between mt-auto pt-4 border-t border-zinc-700/50">
+              <div
+                className={`flex gap-3 mt-auto pt-4 border-t border-zinc-700/50 ${
+                  repoUrl && demoUrl ? "justify-between" : "justify-end"
+                }`}
+              >
                 {repoUrl && (
                   <Button
                     variant="ghost"
