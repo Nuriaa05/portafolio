@@ -1,79 +1,57 @@
 # Creative Portfolio
-
-A modern and responsive creative portfolio built using [v0.dev](https://v0.dev) by Vercel.
-
+ 
+Un portfolio creativo moderno y responsive, desarrollado como proyecto propio.
+## Demo en vivo
 ![Creative Portfolio Preview](./preview.png)
-
-## Live Demo
-
-Check out the live demo: [https://v0-creative-portfolio-o7.vercel.app/](https://v0-creative-portfolio-o7.vercel.app/)
-
-## Features
-
-- Responsive design that works on all devices
-- Modern UI with smooth animations
-- Project showcase section
-- About me section
-- Contact information
-- Built with cutting-edge web technologies
-
-## Technologies Used
-
-- [Next.js](https://nextjs.org/) - The React framework for production
-- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-- [v0.dev](https://v0.dev) - AI-powered UI component generator
-- [Vercel](https://vercel.com) - Deployment platform
-
-## Getting Started
-
-To run this project locally, follow these steps:
-
-1. Clone the repository:
+ 
+Mirá la demo en vivo: [https://portafolio-nuria.vercel.app/)
+ 
+## Características
+ 
+- Diseño responsive que funciona en todos los dispositivos
+- UI moderna con animaciones suaves
+- Sección de showcase de proyectos
+- Sección "Sobre mí"
+- Información de contacto
+- Construido con tecnologías web de última generación
+## Tecnologías utilizadas
+ 
+- [Next.js](https://nextjs.org/) - El framework de React para producción
+- [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utility-first
+## Primeros pasos
+ 
+Para correr este proyecto localmente, seguí estos pasos:
+ 
+1. Cloná el repositorio:
    \`\`\`bash
    git clone https://github.com/shinekyaw/Creative-Portfolio.git
    \`\`\`
-
-2. Navigate to the project directory:
+2. Navegá al directorio del proyecto:
    \`\`\`bash
    cd Creative-Portfolio
    \`\`\`
-
-3. Install dependencies:
+3. Instalá las dependencias:
    \`\`\`bash
    npm install
    \`\`\`
-
-4. Run the development server:
+4. Corré el servidor de desarrollo:
    \`\`\`bash
    npm run dev
    \`\`\`
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to view the portfolio.
-
-## Customization
-
-To customize this portfolio for your own use:
-
-1. Update the content in the appropriate components
-2. Replace placeholder images with your own in the `public` folder
-3. Modify the color scheme in `tailwind.config.js`
-4. Update the metadata in `app/layout.tsx`
-
-## Deployment
-
-This project is configured for easy deployment on Vercel. To deploy your own version:
-
-1. Fork this repository
-2. Create a new project on Vercel
-3. Connect your GitHub account and select this repository
-4. Click "Deploy"
-
-Vercel will automatically deploy your portfolio and provide you with a live URL.
-
-## Contributing
-
-Contributions are welcome! If you have suggestions for improvements, please open an issue or submit a pull request.
-
-## License
-
-This project is open source and available under the [MIT License](./LICENSE).
+5. Abrí [http://localhost:3000](http://localhost:3000) en tu navegador para ver el portfolio.
+## Personalización
+ 
+Para personalizar este portfolio para tu propio uso:
+ 
+1. Actualizá el contenido en los componentes correspondientes
+2. Reemplazá las imágenes de placeholder por las tuyas propias en la carpeta `public`
+3. Modificá el esquema de colores en `tailwind.config.js`
+4. Actualizá los metadatos en `app/layout.tsx`
+## Despliegue
+ 
+Este proyecto está preparado para un despliegue sencillo. Para desplegar tu propia versión:
+ 
+1. Hacé un fork de este repositorio
+2. Configurá tu plataforma de hosting preferida (por ejemplo, conectando tu cuenta de GitHub)
+3. Seleccioná este repositorio y desplegá
+Tu plataforma de hosting se encargará automáticamente del despliegue y te proporcionará una URL en vivo.
