@@ -1,0 +1,12 @@
+packages:
+  - "."
+
+verifyDepsBeforeRun: false
+
+overrides:
+  brace-expansion: 2.0.3
+  glob: 10.5.0
+  minimatch: 9.0.9
+  picomatch: 2.3.2
+  postcss: 8.5.15
+  yaml: 2.8.3
